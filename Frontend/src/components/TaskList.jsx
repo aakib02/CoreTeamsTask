@@ -3,7 +3,7 @@ import axios from "axios";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Link } from "react-router-dom";
-
+import moment from "moment"; 
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -66,6 +66,9 @@ const TaskList = () => {
       >
         <h3 className="font-semibold text-lg text-gray-800">{task.title}</h3>
         <p className="text-sm text-gray-600">{task.description}</p>
+        <p className="text-xs text-gray-500 pt-2">
+        Created At: {moment(task.createdAt).format("MMMM Do YYYY, h:mm:ss a")}
+      </p>
         <div>
         <Link to={`/update-task/${task._id}`}>
         <button type="button" class=" focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm pr-5 py-1 me-2 my-2 text-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
